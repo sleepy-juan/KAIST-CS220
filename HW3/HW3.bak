@@ -1,0 +1,19 @@
+; Principles of Programming
+; 20170504 이주안
+
+#lang racket
+
+; HW 03 Problem 01
+
+; deep-reverse: list -> list
+; to reverse the given list deeply i.e. reverse even the element if it is the list
+; (deep-reverse (list 1 (list 2 3) 4)) should produce '(4 (3 2) 1)
+(define (deep-reverse items)
+  (if (null? items)
+      empty
+      (if (pair? (car items))
+          (append (deep-reverse (cdr items)) (list (deep-reverse (car items))))
+          (append (deep-reverse (cdr items)) (list (car items))))))
+; (test (deep-reverse (list 1 2 3)) '(3 2 1))
+; (test (deep-reverse (list 1 (list 2 3) 4)) '(4 (3 2) 1))
+

@@ -1,0 +1,12 @@
+#lang racket
+
+(define (square x) (* x x))
+
+(define (sqrt-of-square x)
+  (= x (sqrt (square x))))
+
+(define (square-of-sqrt x)
+  (= x (square (sqrt x))))
+
+(sqrt-of-square 4.1)
+(square-of-sqrt 5.0)

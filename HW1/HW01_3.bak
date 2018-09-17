@@ -1,0 +1,18 @@
+; 20170504 이주안
+
+#lang racket
+
+(define (pascal-triangle n)
+  (define (pascal row col)
+    (cond ((= row col) 1)
+        ((= col 1) 1)
+        (else (+ (pascal (- row 1) (- col 1)) (pascal (- row 1) col)))))
+  (define (pascal-display n row col)
+    (if (= row n)
+        (cond ((= col row) (display (pascal row col)))
+              (else (display (pascal row col)) (display " ") (pascal-display n row (+ col 1))))
+        (cond ((= col row) (display (pascal row col)) (display "\n") (pascal-display n (+ row 1) 1))
+              (else (display (pascal row col)) (display " ") (pascal-display n row (+ col 1))))))
+  (pascal-display n 1 1))
+
+(pascal-triangle 5)
